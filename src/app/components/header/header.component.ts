@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Irate } from 'src/app/models/rate';
+import { Rate } from 'src/app/interface/rate';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +7,5 @@ import { Irate } from 'src/app/models/rate';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  @Input() rates: Irate[];
+  @Input() rates: Rate[];
 }

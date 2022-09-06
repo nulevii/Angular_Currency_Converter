@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Irate } from './models/rate';
-import { url } from './data/url';
+import { Rate } from './interface/rate';
+import { RatesService } from './services/rates.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  loading: boolean = true;
-  rates: Irate[] = [];
+export class AppComponent implements OnInit {
+  loading: boolean = false;
+  rates: Rate[] = [];
+
+  constructor(private ratesService: RatesService) {}
 
   ngOnInit(): void {
-    const getProducts = async () => {
-      this.loading = true;
-      const response = await fetch(url);
-      const rates = await response.json();
-      this.loading = await false;
+    this.loading = true;
+    this.ratesService.getRates().subscribe((rates) => {
       this.rates = rates;
-    };
-    getProducts();
+      this.loading = false;
+    });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Irate } from 'src/app/models/rate';
+import { Rate } from 'src/app/interface/rate';
 const convert = (ammount: string, currency1: string, currency2: string) => {
   const convertedAmmount = (
     Number(ammount) *
@@ -13,7 +13,7 @@ const convert = (ammount: string, currency1: string, currency2: string) => {
   styleUrls: ['./converter.component.css'],
 })
 export class ConverterComponent {
-  @Input() rates: Irate[];
+  @Input() rates: Rate[];
   currency1: string = '1';
   currency2: string = '1';
   currencyAmmount1: string = '1';
