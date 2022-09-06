@@ -1,0 +1,42 @@
+<main class='main'>
+  <section class='converter-box'>
+    <h2 class='currency-converter-sign'>
+      Currency Converter
+    </h2>
+    <article class='converter'>
+      <select class='currency' [(ngModel)]='currency1' (ngModelChange)="onCurrency1Change($event)">
+        <ng-container *ngFor="let rate of rates">
+          <option *ngIf="operation === 'buy' && rate.ccy !== 'BTC'" value={{rate.buy}}>{{rate.ccy}}</option>
+          <option *ngIf="operation === 'sale' && rate.ccy !== 'BTC'" value={{rate.sale}}>{{rate.ccy}}</option>
+        </ng-container>
+        <option value="1">
+          UAH
+        </option>
+      </select>
+      <div class='input-wrapper'>
+        <p class='converter-info'>You will pay</p>
+        <input class='currency-input' (keypress)="filterNumbers($event)"
+          (ngModelChange)="onCurrencyAmmount1Change($event)" inputMode="numeric" [(ngModel)]='currencyAmmount1' />
+      </div>
+      <i class="fa-solid fa-money-bill-transfer convert-logo"></i>
+      <select class='currency' [(ngModel)]='currency2' (ngModelChange)="onCurrency2Change($event)">
+        <ng-container *ngFor="let rate of rates">
+          <option *ngIf="operation === 'buy' && rate.ccy !== 'BTC'" value={{rate.buy}}>{{rate.ccy}}</option>
+          <option *ngIf="operation === 'sale' && rate.ccy !== 'BTC'" value={{rate.sale}}>{{rate.ccy}}</option>
+        </ng-container>
+        <option value="1">
+          UAH
+        </option>
+      </select>
+      <div class='input-wrapper'>
+        <p class='converter-info'>You will receive</p>
+        <input class='currency-input' value='currencyAmmount2' inputMode="numeric" [(ngModel)]='currencyAmmount2'
+          (ngModelChange)="onCurrencyAmmount2Change($event)" />
+      </div>
+      <select class='operation-selector' [(ngModel)]='operation' (ngModelChange)="onOperationChange()">
+        <option value="buy">Buy</option>
+        <option value="sale">Sell</option>
+      </select>
+    </article>
+  </section>
+</main>

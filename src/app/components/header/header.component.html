@@ -1,0 +1,26 @@
+<header class='header'>
+  <section class='header-wrapper'>
+    <h1 class='logo-sign'>Currency rate</h1>
+    <article class='main-currencies'>
+
+      <div class="currency" *ngFor="let rate of rates">
+        <i class="currency-logo fa-solid" [ngClass]="{
+           'fa-dollar-sign': rate.ccy === 'USD',
+           'fa-euro-sign' : rate.ccy ==='EUR',
+           'fa-bitcoin-sign': rate.ccy ==='BTC'
+           }"></i>
+        <h3 class="currency-name">
+          {{rate.ccy}}:
+        </h3>
+
+
+
+        <p class="currency-value">
+          {{rate.buy | number:'1.2-2'}}/{{rate.sale| number:'1.2-2'}} {{rate.base_ccy}}
+        </p>
+
+      </div>
+
+    </article>
+  </section>
+</header>
