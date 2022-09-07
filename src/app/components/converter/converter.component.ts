@@ -1,12 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Rate } from 'src/app/interface/rate';
-const convert = (ammount: string, currency1: string, currency2: string) => {
-  const convertedAmmount = (
-    Number(ammount) *
-    (Number(currency1) / Number(currency2))
-  ).toFixed(2);
-  return convertedAmmount.replace(/\.?0+$/, '');
-};
+import { convert } from 'src/app/utilities/convert';
 @Component({
   selector: 'app-converter',
   templateUrl: './converter.component.html',
