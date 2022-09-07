@@ -15,9 +15,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.ratesService.getRates().subscribe((rates) => {
-      this.rates = rates;
-      this.loading = false;
-    });
+    this.ratesService.getRates().subscribe(
+      (rates) => {
+        this.rates = rates;
+        this.loading = false;
+      },
+      (error: any) => console.error(error)
+    );
   }
 }
